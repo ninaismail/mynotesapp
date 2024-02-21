@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router()
 const paginatedResults = require('../middleware/pagination');
-const User = require('../models/User');
+const Note = require('../models/Note');
 
-router.get('/', paginatedResults(User), (req, res) => {
+router.get('/', paginatedResults(Note), (req, res) => {
     res.json(res.paginatedResults);
 });
 module.exports = router;
