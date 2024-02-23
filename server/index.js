@@ -1,11 +1,15 @@
 const express = require('express');
-const app = express();
 const authRoute = require('./routes/auth');
 const notesRoute = require('./routes/notes');
 const connectDB = require('./config/db');
 const session = require('express-session');
 const passport = require('passport');
 const MongoStore = require('connect-mongo');
+const cors = require("cors");
+
+const app = express();
+app.use(cors());
+app.use(express.json());
 
 app.use(session({
     secret: 'twice',
@@ -13,9 +17,7 @@ app.use(session({
     saveUninitialized: true,
     store: MongoStore.create({
       mongoUrl: process.env.MONGODB_URL
-    }),
-    //cookie: { maxAge: new Date ( Date.now() + (3600000) ) } 
-    // Date.now() - 30 * 24 * 60 * 60 * 1000
+    })
   }));
   
   app.use(passport.initialize());
@@ -28,8 +30,6 @@ connectDB();
 
 //Insert Data
 //insertNotesData();
-
-app.use(express.json());
 
 
 app.use('/', authRoute)

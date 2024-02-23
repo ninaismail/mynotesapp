@@ -1,1 +1,7 @@
-GET http://localhost:3000/api/users?page=2&limit=3
+POST http://localhost:3000/auth/login
+content-type: application/json
+
+{
+    "email": "hime90331@gmail.com",
+    "password": "11223344"
+}
