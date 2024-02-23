@@ -1,6 +1,6 @@
 const express = require('express');
 const authRoute = require('./routes/auth');
-const notesRoute = require('./routes/notes');
+const notesRoute = require('./routes/api');
 const connectDB = require('./config/db');
 const session = require('express-session');
 const passport = require('passport');
@@ -33,7 +33,7 @@ connectDB();
 
 
 app.use('/', authRoute)
-app.use('/api/notes', notesRoute)
+app.use('/', notesRoute)
 
 app.listen(3000, () => {
     console.log(`Server is running on port 3000`);
