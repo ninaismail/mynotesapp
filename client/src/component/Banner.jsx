@@ -1,6 +1,10 @@
+
+
 const Banner = () => {
+
     return (
-        <section></section>
+        <section>
+        </section>
     );
 }
 
